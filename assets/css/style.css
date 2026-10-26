@@ -6,7 +6,7 @@
   --muted: #6b6a66;
   --line: #e2e0dc;
   --tile: #f3f2ef;
-  --accent: #b85c00;
+  --accent: #732982;
   --display: "Jost", "Futura", "Century Gothic", "Helvetica Neue", Arial, "Noto Sans Thai", sans-serif;
   --lcars: "Antonio", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --lc-1: #e8870e;
@@ -14,11 +14,13 @@
   --lc-3: #b8378f;
   --shadow: #1c1c1c;
   --charcoal: #3a3a3a;
+  --p1: #e40303; --p2: #ff8c00; --p3: #ffed00; --p4: #008026; --p5: #24408e; --p6: #732982;
   --pride: linear-gradient(90deg, #e40303 0 16.66%, #ff8c00 16.66% 33.33%, #ffed00 33.33% 50%, #008026 50% 66.66%, #24408e 66.66% 83.33%, #732982 83.33% 100%);
   --body: "Helvetica Neue", Helvetica, Arial, "Noto Sans Thai", sans-serif;
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body {
   margin: 0;
   background: var(--bg); color: var(--fg);
@@ -156,3 +158,44 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 .tags { margin: 0; font-size: .82rem; color: var(--muted); }
 .empty { margin: 0; color: var(--muted); font-style: italic; }
 .sound-toggle { margin-left: 12px; font: 500 .8rem/1 var(--display); color: var(--charcoal); background: var(--bg); border: 1.5px solid var(--charcoal); border-radius: 8px; padding: 5px 10px; cursor: pointer; }
+
+/* ===== pride colors through the site ===== */
+.rule { border: 0; height: 4px; background: var(--pride); margin: 0; }
+.sec-head h2, .page-head h1 { position: relative; padding-bottom: 10px; }
+.sec-head h2::after, .page-head h1::after { content: ""; position: absolute; left: 0; bottom: 0; width: 72px; height: 3px; background: var(--pride); }
+.home h1::after { display: none; }
+
+/* topic chips: each topic gets one flag color */
+.chip { --c: var(--charcoal); --on: #fff; }
+.chip:nth-child(6n+2) { --c: var(--p1); }
+.chip:nth-child(6n+3) { --c: var(--p2); --on: #1c1c1c; }
+.chip:nth-child(6n+4) { --c: #e0c400; --on: #1c1c1c; }
+.chip:nth-child(6n+5) { --c: var(--p4); }
+.chip:nth-child(6n+6) { --c: var(--p5); }
+.chip:nth-child(6n+7) { --c: var(--p6); }
+.chip { border-color: var(--c); }
+.chip::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--c); margin-right: 7px; vertical-align: 1px; }
+#topic-all::before { background: var(--pride); width: 18px; border-radius: 3px; }
+.chip[aria-pressed="true"] { background: var(--c); color: var(--on); border-color: var(--c); }
+#topic-all[aria-pressed="true"] { background: var(--charcoal); color: #fff; border-color: var(--charcoal); }
+#topic-all[aria-pressed="true"]::before { outline: 1px solid #fff; }
+
+/* show buttons: selected gets a flag underline */
+.seg button { position: relative; overflow: hidden; }
+.seg button[aria-pressed="true"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--pride); }
+
+/* tiles and samples */
+.tile-band, .sample-band { position: relative; }
+.tile-band::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--pride); }
+.tile summary:hover .tile-band { background: var(--line); }
+.tile-more { color: var(--accent); }
+
+/* friends & family steps: one flag color per step */
+.steps li:nth-child(1) { border-top-color: var(--p1); }
+.steps li:nth-child(2) { border-top-color: var(--p4); }
+.steps li:nth-child(3) { border-top-color: var(--p6); }
+.steps li { border-top-width: 4px; }
+/* Queer gets the whole flag */
+#topic-queer { border-color: var(--charcoal); }
+#topic-queer::before { background: var(--pride); width: 18px; border-radius: 3px; }
+#topic-queer[aria-pressed="true"] { background: var(--charcoal); color: #fff; border-color: var(--charcoal); }
