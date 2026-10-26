@@ -204,42 +204,42 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 .tile summary .kind { margin-bottom: -4px; }
 
 /* ===== timeline (Friends & Family) ===== */
-.timeline { list-style: none; margin: 0; padding: 34px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); position: relative; counter-reset: tl; }
-.timeline li { position: relative; padding: 22px 14px 0 0; display: grid; gap: 4px; align-content: start; min-width: 0; }
-.timeline li::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--line); }
-.timeline li::after { content: ""; position: absolute; left: 0; top: -5px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 3px solid var(--line); box-sizing: border-box; }
-.tl-when { font-family: var(--display); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.tl-what { font-family: var(--display); font-weight: 500; font-size: 1rem; line-height: 1.3; }
-/* finished and current stages get the flag */
-.timeline[data-current="1"] li:nth-child(-n+1)::before,
-.timeline[data-current="2"] li:nth-child(-n+2)::before,
-.timeline[data-current="3"] li:nth-child(-n+3)::before,
-.timeline[data-current="4"] li:nth-child(-n+4)::before { background: var(--pride); }
-.timeline[data-current="1"] li:nth-child(-n+1)::after,
-.timeline[data-current="2"] li:nth-child(-n+2)::after,
-.timeline[data-current="3"] li:nth-child(-n+3)::after,
-.timeline[data-current="4"] li:nth-child(-n+4)::after { border-color: var(--charcoal); background: var(--charcoal); }
-/* "You are here" marker at the end of the current stage */
-.timeline[data-current="1"] li:nth-child(1),
-.timeline[data-current="2"] li:nth-child(2),
-.timeline[data-current="3"] li:nth-child(3),
-.timeline[data-current="4"] li:nth-child(4) { --here: 1; }
-.timeline[data-current="1"] li:nth-child(1) .tl-when::before,
-.timeline[data-current="2"] li:nth-child(2) .tl-when::before,
-.timeline[data-current="3"] li:nth-child(3) .tl-when::before,
-.timeline[data-current="4"] li:nth-child(4) .tl-when::before {
-  content: "You are here ▼"; position: absolute; right: 0; top: -34px; transform: translateX(50%);
-  font-family: var(--display); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); white-space: nowrap; font-weight: 600;
+.timeline { list-style: none; margin: 0; padding: 30px 0 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.timeline li { position: relative; padding: 22px 12px 0 0; display: grid; gap: 4px; align-content: start; min-width: 0; }
+/* the rainbow line: each stage is one flag color */
+.timeline li::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 8px; background: var(--c); }
+.timeline li:nth-child(1) { --c: var(--p1); }
+.timeline li:nth-child(2) { --c: var(--p2); }
+.timeline li:nth-child(3) { --c: #e0c400; }
+.timeline li:nth-child(4) { --c: var(--p4); }
+.timeline li:nth-child(5) { --c: var(--p5); }
+.timeline li:nth-child(6) { --c: var(--p6); }
+.timeline li:first-child::before { border-radius: 4px 0 0 4px; }
+.timeline li:last-child::before { border-radius: 0 4px 4px 0; }
+.tl-when { font-family: var(--display); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.tl-what { font-family: var(--display); font-weight: 500; font-size: .98rem; line-height: 1.3; }
+/* purple upside-down triangle at the end of the current stage */
+.timeline[data-current="1"] li:nth-child(1)::after, .timeline[data-current="2"] li:nth-child(2)::after,
+.timeline[data-current="3"] li:nth-child(3)::after, .timeline[data-current="4"] li:nth-child(4)::after,
+.timeline[data-current="5"] li:nth-child(5)::after, .timeline[data-current="6"] li:nth-child(6)::after {
+  content: ""; position: absolute; right: -11px; top: -26px; width: 0; height: 0;
+  border-left: 11px solid transparent; border-right: 11px solid transparent; border-top: 18px solid var(--p6);
 }
+/* later stages look upcoming */
+.timeline[data-current="1"] li:nth-child(n+2), .timeline[data-current="2"] li:nth-child(n+3),
+.timeline[data-current="3"] li:nth-child(n+4), .timeline[data-current="4"] li:nth-child(n+5),
+.timeline[data-current="5"] li:nth-child(n+6) { opacity: .55; }
 .tl-note { margin: 0; color: var(--muted); }
-@media (max-width: 640px) {
-  .timeline { grid-template-columns: minmax(0, 1fr); padding: 0 0 0 26px; gap: 22px; }
-  .timeline li { padding: 0; }
-  .timeline li::before { left: -20px; right: auto; top: 0; bottom: -22px; width: 6px; height: auto; }
-  .timeline li:last-child::before { bottom: 0; }
-  .timeline li::after { left: -25px; top: 0; }
-  .timeline[data-current="1"] li:nth-child(1) .tl-when::before,
-  .timeline[data-current="2"] li:nth-child(2) .tl-when::before,
-  .timeline[data-current="3"] li:nth-child(3) .tl-when::before,
-  .timeline[data-current="4"] li:nth-child(4) .tl-when::before { content: "◀ You are here"; position: static; transform: none; display: block; margin-bottom: 2px; }
+@media (max-width: 760px) {
+  .timeline { grid-template-columns: minmax(0, 1fr); padding: 0 0 0 30px; gap: 0; }
+  .timeline li { padding: 0 0 20px; }
+  .timeline li::before { left: -26px; right: auto; top: 0; bottom: 0; width: 8px; height: auto; border-radius: 0 !important; }
+  .timeline li:first-child::before { border-radius: 4px 4px 0 0 !important; }
+  .timeline li:last-child::before { border-radius: 0 0 4px 4px !important; }
+  .timeline[data-current="1"] li:nth-child(1)::after, .timeline[data-current="2"] li:nth-child(2)::after,
+  .timeline[data-current="3"] li:nth-child(3)::after, .timeline[data-current="4"] li:nth-child(4)::after,
+  .timeline[data-current="5"] li:nth-child(5)::after, .timeline[data-current="6"] li:nth-child(6)::after {
+    right: auto; left: -50px; top: auto; bottom: -9px;
+    border-top: 11px solid transparent; border-bottom: 11px solid transparent; border-left: 18px solid var(--p6); border-right: 0;
+  }
 }
