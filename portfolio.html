@@ -7,7 +7,7 @@ title: Portfolio
 
 <div class="page-head">
   <h1>Portfolio</h1>
-  <p>Forthcoming publications, ongoing studies, writing samples, and abstracts of my graduate coursework. Pick a type, then narrow it by topic.</p>
+  <p>Forthcoming publications, ongoing studies, writing samples, abstracts of my graduate coursework, and certifications. Pick a type, then narrow it by topic.</p>
 </div>
 
 <div class="controls">
@@ -18,6 +18,7 @@ title: Portfolio
       <button type="button" id="type-major" data-show="major" aria-pressed="false">Major Work</button>
       <button type="button" id="type-samples" data-show="samples" aria-pressed="false">Writing Samples</button>
       <button type="button" id="type-abstracts" data-show="abstracts" aria-pressed="false">Abstracts</button>
+      <button type="button" id="type-certifications" data-show="certifications" aria-pressed="false">Certifications</button>
     </div>
   </div>
   <div class="control-row">
@@ -34,17 +35,24 @@ title: Portfolio
 <!-- ===== MAJOR WORK (comes from the _major folder) ===== -->
 <section id="major" data-type="major" aria-labelledby="work-h">
   <div class="sec-head"><h2 id="work-h">Major Work</h2></div>
-  <div class="entries">
+  <div class="grid">
     {% assign major = site.major | sort: "order" %}
     {% for m in major %}
-    <article class="entry" data-topics="{% for t in m.topics %}{{ t | slugify }} {% endfor %}">
-      <p class="kind">{{ m.kind }}</p>
-      <h3>{{ m.title }}</h3>
-      {% if m.meta %}<p class="meta">{{ m.meta }}</p>{% endif %}
+    <details class="tile" data-topics="{% for t in m.topics %}{{ t | slugify }} {% endfor %}">
+      <summary>
+        {% if m.image %}
+        <img class="tile-img" src="{{ '/assets/images/' | append: m.image | relative_url }}" alt="" loading="lazy">
+        {% else %}
+        <span class="tile-band"><span class="tile-topic">{{ m.topics | join: " · " }}</span></span>
+        {% endif %}
+        <span class="kind">{{ m.kind }}</span>
+        <span class="tile-title">{{ m.title }}</span>
+        <span class="tile-more">Read more</span>
+      </summary>
+      {% if m.meta %}<p class="meta tile-meta">{{ m.meta }}</p>{% endif %}
       {% assign abs = m.content | strip %}
       {% if abs != "" %}<p class="abs">{{ abs | remove: "<p>" | remove: "</p>" }}</p>{% endif %}
-      {% if m.topics.size > 0 %}<p class="tags">{{ m.topics | join: " · " }}</p>{% endif %}
-    </article>
+    </details>
     {% endfor %}
   </div>
   <p class="empty" hidden>Nothing in Major Work has that topic.</p>
@@ -94,11 +102,11 @@ title: Portfolio
   <p class="empty" hidden>No abstracts have that topic.</p>
 </section>
 
-<!-- ===== HUMAN SUBJECTS TRAINING (edit the list here) ===== -->
-<section id="training" aria-labelledby="train-h">
+<!-- ===== CERTIFICATIONS (edit the list here) ===== -->
+<section id="certifications" data-type="certifications" aria-labelledby="train-h">
   <div class="sec-head">
-    <h2 id="train-h">Human Subjects Training</h2>
-    <p>Current certifications for research with people. Years are completion dates.</p>
+    <h2 id="train-h">Certifications</h2>
+    <p>Human subjects and research training. Years are completion dates.</p>
   </div>
   <div class="certs">
 <div class="cert-group"><h3>Human subjects</h3><ul><li><span class="cert">Human Subject Protection Training (Group 1)</span><span class="cert-date">2026 · expires 2029</span></li><li><span class="cert">Vulnerable Populations in Human Subject Research (Group 2)</span><span class="cert-date">2026 · expires 2029</span></li><li><span class="cert">Social and Behavioral Research, Basic and Refresher</span><span class="cert-date">2026 · expires 2028</span></li><li><span class="cert">Human Research Protection Program Certification, Texas Tech University</span><span class="cert-date">2026</span></li></ul></div>

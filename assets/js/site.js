@@ -37,6 +37,6 @@
   });
 
   var start = (location.hash || "").replace("#", "");
-  if (["major", "samples", "abstracts"].indexOf(start) > -1) state.show = start;
+  if (["major", "samples", "abstracts", "certifications"].indexOf(start) > -1) state.show = start;
   apply();
 })();

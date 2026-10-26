@@ -199,3 +199,6 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 #topic-queer { border-color: var(--charcoal); }
 #topic-queer::before { background: var(--pride); width: 18px; border-radius: 3px; }
 #topic-queer[aria-pressed="true"] { background: var(--charcoal); color: #fff; border-color: var(--charcoal); }
+.tile .tile-meta { font-size: .9rem; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+.tile .tile-meta + .abs { border-top: 0; padding-top: 0; margin-top: 8px; }
+.tile summary .kind { margin-bottom: -4px; }
