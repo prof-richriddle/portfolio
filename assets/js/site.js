@@ -1,40 +1,42 @@
 (function () {
-  var NOTES = {
-    everyone: "Everything on the site, top to bottom.",
-    family: "The short version: what I do, how a project grows, and what has come of it.",
-    peers: "Research, studies, every abstract, and my human subjects training."
-  };
-  var viewBtns = document.querySelectorAll(".seg button");
-  var blocks = document.querySelectorAll("[data-views]");
-  function setView(v, push) {
-    if (!NOTES[v]) v = "everyone";
-    viewBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.view === v)); });
-    blocks.forEach(function (el) {
-      var list = el.dataset.views.split(" ");
-      el.hidden = !(v === "everyone" || list.indexOf(v) > -1);
-    });
-    document.getElementById("view-note").textContent = NOTES[v];
-    if (push) { try { history.replaceState(null, "", "#" + v); } catch (e) {} }
-  }
-  viewBtns.forEach(function (b) { b.addEventListener("click", function () { setView(b.dataset.view, true); }); });
+  // Portfolio page only: type buttons and topic filters.
+  var typeBtns = document.querySelectorAll("[data-show]");
+  var chips = document.querySelectorAll(".chip");
+  if (!typeBtns.length) return;
+  var sections = document.querySelectorAll("section[data-type]");
+  var state = { show: "all", topic: "all" };
 
-  document.querySelectorAll("nav.top a").forEach(function (a) {
-    a.addEventListener("click", function () {
-      var t = document.querySelector(a.getAttribute("href"));
-      if (t && t.hidden) setView("everyone", false);
+  function apply() {
+    sections.forEach(function (sec) {
+      sec.hidden = !(state.show === "all" || sec.dataset.type === state.show);
+      var items = sec.querySelectorAll("[data-topics]");
+      if (!items.length) return;
+      var shown = 0;
+      items.forEach(function (el) {
+        var list = el.dataset.topics.trim().split(/\s+/);
+        var ok = state.topic === "all" || list.indexOf(state.topic) > -1;
+        el.hidden = !ok;
+        if (ok) shown++;
+      });
+      var empty = sec.querySelector(".empty");
+      if (empty) empty.hidden = shown > 0;
+    });
+    typeBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.show === state.show)); });
+    chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c.dataset.topic === state.topic)); });
+  }
+
+  typeBtns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      state.show = b.dataset.show;
+      apply();
+      try { history.replaceState(null, "", state.show === "all" ? location.pathname : "#" + state.show); } catch (e) {}
     });
   });
-
-  var chips = document.querySelectorAll(".chip");
-  var tiles = document.querySelectorAll(".tile");
   chips.forEach(function (c) {
-    c.addEventListener("click", function () {
-      var t = c.dataset.topic;
-      chips.forEach(function (x) { x.setAttribute("aria-pressed", String(x === c)); });
-      tiles.forEach(function (el) { el.hidden = !(t === "all" || el.dataset.topic === t); });
-    });
+    c.addEventListener("click", function () { state.topic = c.dataset.topic; apply(); });
   });
 
   var start = (location.hash || "").replace("#", "");
-  setView(NOTES[start] ? start : "everyone", false);
+  if (["major", "samples", "abstracts"].indexOf(start) > -1) state.show = start;
+  apply();
 })();
