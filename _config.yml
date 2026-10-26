@@ -1,0 +1,11 @@
+title: "What Are We Doing Here?"
+description: "A Portfolio Guide for Various Folk in My Life"
+author: "Rich Riddle"
+url: "https://prof-richriddle.github.io"
+baseurl: "/portfolio"
+
+collections:
+  works:
+    output: false
+  major:
+    output: false
