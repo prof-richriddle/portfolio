@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Rich Riddle's portfolio: research on Thai rhetoric, writing, and technical communication.">
+<title>What Are We Doing Here?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Noto+Sans+Thai:wght@400;600&display=swap">
+<style>
+/* Layout: a quiet, left-aligned portfolio in the manner of a Squarespace "Avenue" site: name and nav across the top, a hairline, then sections and a grid of titled tiles. */
+:root {
+  --bg: #ffffff;
+  --fg: #272727;
+  --muted: #6b6a66;
+  --line: #e2e0dc;
+  --tile: #f3f2ef;
+  --accent: #2f5d7c;
+  --display: "Jost", "Futura", "Century Gothic", "Helvetica Neue", Arial, "Noto Sans Thai", sans-serif;
+  --body: "Helvetica Neue", Helvetica, Arial, "Noto Sans Thai", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161615; --fg: #e8e6e1; --muted: #a3a09a; --line: #34332f; --tile: #22211f; --accent: #8db7d4; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161615; --fg: #e8e6e1; --muted: #a3a09a; --line: #34332f; --tile: #22211f; --accent: #8db7d4; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 15px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1080px; margin: 0 auto; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; margin: 0; }
+
+/* header */
+header.site { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px; padding-block: 28px 18px; }
+.logo { font-family: var(--display); font-size: 1.15rem; font-weight: 500; letter-spacing: .02em; color: var(--fg); text-decoration: none; }
+.logo span { color: var(--muted); font-weight: 400; }
+nav.top ul { display: flex; flex-wrap: wrap; gap: 4px 20px; list-style: none; margin: 0; padding: 0; }
+nav.top a { font-family: var(--display); font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; color: var(--fg); text-decoration: none; }
+nav.top a:hover { color: var(--accent); }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+/* intro */
+.intro { padding-block: 48px 36px; display: grid; gap: 18px; max-width: 46rem; }
+.intro h1 { font-size: clamp(1.8rem, 4.2vw, 2.7rem); line-height: 1.15; letter-spacing: -.005em; }
+.intro p { margin: 0; color: var(--muted); font-size: 1.02rem; }
+.visit { display: grid; gap: 10px; margin-top: 6px; }
+.visit-label { font-family: var(--display); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.seg { display: flex; flex-wrap: wrap; gap: 8px; }
+.seg button, .chip {
+  font: 500 .88rem/1 var(--display); letter-spacing: .03em;
+  padding: 10px 14px; border: 1px solid var(--line); background: var(--bg); color: var(--fg);
+  cursor: pointer; border-radius: 0;
+}
+.seg button[aria-pressed="true"], .chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.seg button:hover, .chip:hover { border-color: var(--fg); }
+.view-note { font-size: .92rem; color: var(--muted); margin: 0; min-height: 1.5em; }
+
+/* sections */
+section { padding-block: 44px; border-top: 1px solid var(--line); display: grid; gap: 22px; }
+.sec-head { display: grid; gap: 6px; }
+.sec-head h2 { font-size: 1.5rem; }
+.sec-head p { margin: 0; color: var(--muted); max-width: 44rem; }
+.kind { font-family: var(--display); font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.meta { margin: 0; color: var(--muted); font-size: .94rem; }
+.abs { margin: 0; max-width: 42rem; }
+.draft { font-family: var(--display); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); border: 1px solid currentColor; padding: 2px 6px; margin-left: 8px; vertical-align: middle; }
+
+.about { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 28px 40px; }
+.about > div { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.about h3 { font-size: 1.05rem; }
+.about p { margin: 0; }
+.about ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 0; counter-reset: step; }
+.steps li { counter-increment: step; padding: 18px 20px 18px 0; border-top: 2px solid var(--fg); display: grid; gap: 6px; align-content: start; margin-right: 20px; }
+.steps li::before { content: "Step " counter(step); font-family: var(--display); font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.steps h3 { font-size: 1.02rem; }
+.steps p { margin: 0; font-size: .95rem; }
+
+.entries { display: grid; gap: 28px; }
+.entry { display: grid; gap: 6px; padding-bottom: 26px; border-bottom: 1px solid var(--line); }
+.entry:last-child { border-bottom: 0; padding-bottom: 0; }
+.entry h3 { font-size: 1.12rem; line-height: 1.35; max-width: 46rem; }
+
+.samples { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 24px; }
+.sample { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.sample-band { aspect-ratio: 4 / 3; max-width: 100%; background: repeating-linear-gradient(135deg, var(--tile) 0 10px, var(--bg) 10px 20px); border: 1px dashed var(--line); }
+.sample h3 { font-size: 1rem; color: var(--muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-size: .8rem; padding: 8px 11px; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 24px; align-items: start; }
+@media (max-width: 860px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.tile { min-width: 0; }
+.tile summary { list-style: none; cursor: pointer; display: grid; gap: 10px; }
+.tile summary::-webkit-details-marker { display: none; }
+.tile-band { aspect-ratio: 3 / 2; max-width: 100%; background: var(--tile); display: flex; align-items: flex-end; padding: 14px; transition: background .2s; }
+.tile summary:hover .tile-band { background: var(--line); }
+.tile-topic { font-family: var(--display); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.tile-title { font-family: var(--display); font-weight: 500; font-size: .98rem; line-height: 1.35; overflow-wrap: anywhere; }
+.tile-more { font-size: .82rem; color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.tile[open] .tile-more { display: none; }
+.tile .abs { font-size: .92rem; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
+
+.teach { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 24px; }
+.teach div { display: grid; gap: 6px; align-content: start; }
+.teach h3 { font-size: 1.02rem; }
+.teach p { margin: 0; font-size: .95rem; }
+
+.certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 28px 40px; }
+.cert-group { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.cert-group h3 { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.cert-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.cert-group li { display: grid; gap: 2px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.cert { font-size: .95rem; }
+.cert-date { font-size: .84rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.cert-note { margin: 0; font-size: .88rem; color: var(--muted); }
+
+.contact p { margin: 0; }
+footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; display: flex; flex-wrap: wrap; gap: 6px 24px; justify-content: space-between; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="logo" href="#top" id="top">Rich Riddle <span>| What Are We Doing Here?</span></a>
+    <nav class="top" aria-label="Sections">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Major Work</a></li>
+        <li><a href="#coursework">Coursework</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <hr class="rule">
+
+  <div class="intro">
+    <h1>A Portfolio Guide for Various Folk in My Life</h1>
+    <p>This site is for anyone curious about my work: family and friends wondering what I write about, peers looking for a co-author, and anyone who wants to see how wide one person’s interests can run.</p>
+    <div class="visit">
+      <span class="visit-label" id="visit-label">Who’s visiting?</span>
+      <div class="seg" role="group" aria-labelledby="visit-label">
+        <button type="button" id="view-everyone" data-view="everyone" aria-pressed="true">Show me everything</button>
+        <button type="button" id="view-family" data-view="family" aria-pressed="false">Friends &amp; family</button>
+        <button type="button" id="view-peers" data-view="peers" aria-pressed="false">Peers &amp; co-authors</button>
+      </div>
+      <p class="view-note" id="view-note" aria-live="polite">Everything on the site, top to bottom.</p>
+    </div>
+  </div>
+
+  <section id="about" data-views="family peers" aria-labelledby="about-h">
+    <div class="sec-head"><h2 id="about-h">About <span class="draft">Draft</span></h2></div>
+    <div class="about">
+      <div>
+        <h3>Who I am</h3>
+        <p>I teach first-year writing and technical communication, and I’m a Ph.D. student in Technical Communication and Rhetoric at Texas Tech University. I came to academia after a career in operations and pricing management in international freight forwarding. My research looks at Thai rhetoric as a system, with current work on conduct rhetoric, AI literacy, and what commercial machine translation does to culturally specific meaning.</p>
+      </div>
+      <div>
+        <h3>What I’m doing now</h3>
+        <ul>
+          <li>Finishing doctoral coursework and preparing for qualifying exams</li>
+          <li>Writing a book chapter on the Thai series <i>Khemjira</i></li>
+          <li>Running two IRB-approved studies</li>
+          <li>Teaching writing courses online</li>
+          <li>Serving on committees that write AI and technical communication guidance for faculty</li>
+        </ul>
+      </div>
+      <div>
+        <h3>How I work</h3>
+        <p>In my classes, anyone can point out a mistake, me included. I would rather try something new and fail than give students a “safe” path that still falls short. I set the room up as a brave space: a place to say what you think and to hear, respectfully, what you don’t agree with. In research, I try to read a culture on its own terms before I compare it to mine.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" data-views="family" aria-labelledby="process-h">
+    <div class="sec-head">
+      <h2 id="process-h">How a class paper becomes a book chapter</h2>
+      <p>One project, start to finish, so you can see what all of this looks like in practice.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>A class proposal</h3><p>Fall 2025: a semester project proposal on the Thai series <i>Khemjira</i> as a site for studying Thai rhetoric, written for a history of rhetoric seminar.</p></li>
+      <li><h3>A conference talk</h3><p>March 2026: “Khemjira Must Survive: Queer Longing and Thai Spirituality at the Intersection of Thai Rhetoric,” at the Gods and Monsters Conference.</p></li>
+      <li><h3>A book chapter</h3><p>Forthcoming: “Khemjira: The Queering of Thai Lakorn’s Cosmology,” in a collected edition from the conference (McFarland).</p></li>
+    </ol>
+  </section>
+
+  <section id="work" data-views="family peers" aria-labelledby="work-h">
+    <div class="sec-head">
+      <h2 id="work-h">Major Work</h2>
+      <p>Forthcoming publications, ongoing studies, conference presentations, and my thesis.</p>
+    </div>
+    <div class="entries">
+<article class="entry">
+  <p class="kind">Forthcoming chapter</p>
+  <h3>Khemjira: The Queering of Thai Lakorn's Cosmology</h3>
+  <p class="meta">Sole author. Forthcoming in a collected edition from the Gods and Monsters Conference (McFarland).</p>
+  
+</article>
+<article class="entry">
+  <p class="kind">Forthcoming chapter</p>
+  <h3>Research Intelligence as Rhetorical Practice: Human Judgment in AI-Accelerated Analysis</h3>
+  <p class="meta">With Lauren N. Maher and Rich Rice. Forthcoming in <i>Research Intelligence in Academic Libraries: Enhancing Institutional Impact and Output</i> (Association of College and Research Libraries).</p>
+  <p class="abs">Research intelligence is becoming part of how academic libraries help institutions understand scholarly activity and research impact. Analytics can find relationships and trends, but people still have to decide what those findings mean. We develop the concept of rhetorical research intelligence: how researchers and their institutional partners move from data and metrics to contextualized evidence, defensible claims, and accounts of research impact. Using a bounded case of AI-assisted textual analysis of a multi-author manuscript, we propose a practical sequence for this work: locate, question, contextualize, triangulate, interpret, and communicate.</p>
+</article>
+<article class="entry">
+  <p class="kind">Forthcoming article</p>
+  <h3>Does LLM Translation Erase Indigenous Meaning?: Analyzing High-Context Thai BL Through Low-Context LLMs</h3>
+  <p class="meta">With Kulsawasd Jitkajornwanich.</p>
+  <p class="abs">Thai BL series are watched worldwide, more and more often through AI translation. This work asks whether large language models flatten high-context Thai concepts such as spirituality, hierarchy, and ใจ (jai, heart) into Western defaults, which Venuti calls “domesticating” translation. Borrowing from algorithmic auditing, it uses LLMs as a “test audience” to pinpoint where Western-trained systems fail to read Thai meaning, starting with relational words such as แม่ค้า (mâe káa, female vendor) and พี่ (pêe, older sibling).</p>
+</article>
+<article class="entry">
+  <p class="kind">Ongoing study</p>
+  <h3>A Look at “The Cottage”: The Literal and Figurative Site of the Heated Rivalry Fandom</h3>
+  <p class="meta">IRB-approved interview study.</p>
+  <p class="abs">How does a TV show travel, who carries it, and what does that do to the relationships along the way? This study follows how the HBO series <i>Heated Rivalry</i> moved through a network of colleagues, friends, and partners. Participants fall into six tracks, from people who found the show on their own to people who picked it up secondhand without watching it. Early findings: the network itself is the site of study, my relationships with participants are part of the method, and people used the shared show for emotional regulation, holding their network together under political pressure.</p>
+</article>
+<article class="entry">
+  <p class="kind">Ongoing study</p>
+  <h3>Lions and Tigers and Bears, Oh My!: Risks to First-Year Composition Students When Writing Autoethnography</h3>
+  <p class="meta">IRB-approved study.</p>
+  <p class="abs">Autoethnography changed my life as a writer, and I want first-year composition students to have it too. But how do I assign it without scaring students away from writing their truth? How do I convince them that good content does not have to be traumatic content, and how do I debrief them without them feeling betrayed? This study takes up those questions.</p>
+</article>
+<article class="entry">
+  <p class="kind">Conference presentation</p>
+  <h3>Khemjira Must Survive: Queer Longing and Thai Spirituality at the Intersection of Thai Rhetoric</h3>
+  <p class="meta">Gods and Monsters Conference, March 2026.</p>
+  
+</article>
+<article class="entry">
+  <p class="kind">Conference presentation</p>
+  <h3>Freedom in Thai BL: An Excerpt from a Farang Fan’s Autoethnography</h3>
+  <p class="meta">With a focus on LIVE-ACTION serial, episode-length productions. American Comparative Literature Association, Chicago, March 2023.</p>
+  
+</article>
+<article class="entry">
+  <p class="kind">MA thesis</p>
+  <h3>Thai BL as a Means for Dismantling Entrenched Gender Binaries and Redefining the Boundaries of the Patriarchal Hegemony: An Autoethnography</h3>
+  <p class="meta">2023.</p>
+  
+</article>
+    </div>
+  </section>
+
+  <section id="samples" data-views="family peers" aria-labelledby="samples-h">
+    <div class="sec-head">
+      <h2 id="samples-h">Writing Samples</h2>
+      <p>Four pieces in full, each with a note on why it matters to where my work is going.</p>
+    </div>
+    <div class="samples"><div class="sample">
+  <div class="sample-band" aria-hidden="true"></div>
+  <p class="kind">Writing sample 1</p>
+  <h3>To be chosen</h3>
+  <p class="meta">Full text with a short narrative on why it matters to my work. Coming in the next draft.</p>
+</div><div class="sample">
+  <div class="sample-band" aria-hidden="true"></div>
+  <p class="kind">Writing sample 2</p>
+  <h3>To be chosen</h3>
+  <p class="meta">Full text with a short narrative on why it matters to my work. Coming in the next draft.</p>
+</div><div class="sample">
+  <div class="sample-band" aria-hidden="true"></div>
+  <p class="kind">Writing sample 3</p>
+  <h3>To be chosen</h3>
+  <p class="meta">Full text with a short narrative on why it matters to my work. Coming in the next draft.</p>
+</div><div class="sample">
+  <div class="sample-band" aria-hidden="true"></div>
+  <p class="kind">Writing sample 4</p>
+  <h3>To be chosen</h3>
+  <p class="meta">Full text with a short narrative on why it matters to my work. Coming in the next draft.</p>
+</div></div>
+  </section>
+
+  <section id="coursework" data-views="peers" aria-labelledby="course-h">
+    <div class="sec-head">
+      <h2 id="course-h">Coursework</h2>
+      <p>26 papers, presentations, and projects from graduate school, by topic. Open any tile to read its abstract.</p>
+    </div>
+    <div class="chips" role="group" aria-label="Filter by topic">
+<button type="button" class="chip" aria-pressed="true" data-topic="all" id="topic-all">All topics</button>
+<button type="button" class="chip" aria-pressed="false" data-topic="thai-tv-and-thai-rhetoric" id="topic-thai-tv-and-thai-rhetoric">Thai TV and Thai rhetoric</button>
+<button type="button" class="chip" aria-pressed="false" data-topic="ai-and-translation" id="topic-ai-and-translation">AI and translation</button>
+<button type="button" class="chip" aria-pressed="false" data-topic="queer-literature" id="topic-queer-literature">Queer literature</button>
+<button type="button" class="chip" aria-pressed="false" data-topic="literature-and-film" id="topic-literature-and-film">Literature and film</button>
+<button type="button" class="chip" aria-pressed="false" data-topic="teaching-writing" id="topic-teaching-writing">Teaching writing</button>
+<button type="button" class="chip" aria-pressed="false" data-topic="the-university" id="topic-the-university">The university</button>
+<button type="button" class="chip" aria-pressed="false" data-topic="personal-essays" id="topic-personal-essays">Personal essays</button>
+<button type="button" class="chip" aria-pressed="false" data-topic="professional-and-applied" id="topic-professional-and-applied">Professional and applied</button>
+    </div>
+    <div class="grid" id="tiles">
+<details class="tile" data-topic="thai-tv-and-thai-rhetoric">
+  <summary><span class="tile-band"><span class="tile-topic">Thai TV and Thai rhetoric</span></span><span class="tile-title">Thai Cis Male Masculinity and the World of Thai BL: The Rhetorical Implications of Globalization on a Queer Thai Genre</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">Thai BL began with <i>Love Sick: The Series</i> (2014) and grew from fan-subtitled uploads into a genre watched around the world. This paper traces three founding series (<i>Love Sick</i>, <i>SOTUS</i>, and <i>TharnType</i>) and the debates international fans have had over calling one man in a couple a “wife.” I argue that Western fans tend to police their own gaze while trying to read the genre on Thai terms, while Filipino fans, as Baudinette describes, “creatively misread” it into what they need. Since so little scholarship addresses Thai BL directly, I propose an interdisciplinary approach centered on rhetorical analysis.</p>
+</details>
+<details class="tile" data-topic="thai-tv-and-thai-rhetoric">
+  <summary><span class="tile-band"><span class="tile-topic">Thai TV and Thai rhetoric</span></span><span class="tile-title">A Review of Thomas Baudinette’s Book on Thai BL Media (Bloomsbury, 2023)</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">Written for <i>Technical Communication Quarterly</i>, this review reads Baudinette’s argument that Thai BL has displaced Japanese BL as the leading form of Asian queer popular culture. I argue that the book, without using the field’s language, studies genre ecology and multiplatform information architecture, and that its “creative misreading” names something communication scholars have circled without coining.</p>
+</details>
+<details class="tile" data-topic="thai-tv-and-thai-rhetoric">
+  <summary><span class="tile-band"><span class="tile-topic">Thai TV and Thai rhetoric</span></span><span class="tile-title">Reading a Rhetoric on Its Own Terms: Comparative Rhetoric and the Diagnostic of LLM Translation</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">Thai rhetoric, วาทวิทยา (wâat wít-tá-yaa), is its own system, not an accent of the Aristotelian tradition. This presentation starts from one word, เตือน (dteuuan), where an LLM subtitle turned a binding directive into a passive “reminded,” and argues that a well-formatted subtitle is not the same as a meaningful one. It introduces a 21-title comparative rhetoric reading list, drawing on Mao, Stroud, and Adsanatham.</p>
+</details>
+<details class="tile" data-topic="ai-and-translation">
+  <summary><span class="tile-band"><span class="tile-topic">AI and translation</span></span><span class="tile-title">The Power of Translation, Why Breaking the Rules Can Matter And Why English Isn’t “Enough”</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">The usual arguments for English-only technical communication (safety, efficiency, education) leave out most of the world. This presentation centers on one scene from the Thai series <i>Secret Crush on You</i> (2022), where the subtitler adds a translator’s note: Touch calls Daisy แม่ค้า (mâe káa), the word for “vendor” used only for women, and in doing so affirms her identity. Google Translate won’t give you that, so who are we trusting to keep us connected to the world?</p>
+</details>
+<details class="tile" data-topic="ai-and-translation">
+  <summary><span class="tile-band"><span class="tile-topic">AI and translation</span></span><span class="tile-title">The Machine in the Box: Machine Translation and Tokenization</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">With Maria Allen-Jordan. This class discussion we led was framed by Gonzales’s “translation moment” and UNESCO’s Recommendation on the Ethics of AI. Every translation is a currency exchange that skims a fee; the question is who sets the exchange rate, and why it is higher for some languages. Readings from Tavares, Zhang, and Rivera ask where responsibility lands when people leave machine output untouched.</p>
+</details>
+<details class="tile" data-topic="queer-literature">
+  <summary><span class="tile-band"><span class="tile-topic">Queer literature</span></span><span class="tile-title">Did La Edwin Call You?…Yes, Edwin. The One Who Thinks She’s a Man: The Restraining Heteronormative and Homonormative Expectations in <i>Mundo Cruel</i></span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">Luis Negrón’s <i>Mundo Cruel</i> is a collection of darkly funny short stories about queer life in Puerto Rico. Using Berlant and Warner on heteronormativity and Asencio on Puerto Rican gay masculinities, I read “La Edwin,” “Botella,” “The Vampire of Moca,” and “The Chosen One” for how both straight and gay norms constrain queer Latin bodies. I argue that the collection refuses to cement its characters in definitions and instead shows every queer person as different and exactly the same: human.</p>
+</details>
+<details class="tile" data-topic="queer-literature">
+  <summary><span class="tile-band"><span class="tile-topic">Queer literature</span></span><span class="tile-title"><i>Under the Udala Trees</i></span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">Group project with four classmates. A class presentation on Chinelo Okparanta’s novel <i>Under the Udala Trees</i> (2015), covering the author’s background and awards, the Biafran War, and Nigeria’s laws against same-sex relationships, including the 2014 Same-Sex Prohibition Act, followed by discussion questions on religion, diaspora, narrative style, and the queer body.</p>
+</details>
+<details class="tile" data-topic="queer-literature">
+  <summary><span class="tile-band"><span class="tile-topic">Queer literature</span></span><span class="tile-title">Faggotry, My Favorite Fucking Word: Language is Freedom</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">If knowledge is power and knowledge requires language, then gaining or destroying power means gaining or destroying language. Drawing on Boisen and Murray’s “apartheid of thought” and Baker-Bell’s <i>Linguistic Justice</i>, I argue that a white, patriarchal hegemony in the US works to deny, suppress, and obscure the language of marginalized groups. Alongside my own path to finding words for myself as a gay man, I look at the Deaf President Now movement and the classroom, and I close by reclaiming the word in the title.</p>
+</details>
+<details class="tile" data-topic="literature-and-film">
+  <summary><span class="tile-band"><span class="tile-topic">Literature and film</span></span><span class="tile-title">Star Trek’s Method of Fictional Dissemination: Using the Fantastic to Apply “Unpopular” Ideas to a Predominantly U.S. Audience</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">Star Trek’s creators have said it is the audience’s job to supply the answers, but I argue that nothing in Star Trek is created by accident. Building on Hatzivassiliou, who reads the franchise as an effort to educate the public in a liberal view of the world, I argue that its success comes from placing “unmentionable” ideas on bodies that are not human, or are far removed from the humans of reality. Through its most powerful and popular races, the Vulcans, the Klingons, and the Borg, it presents ideas about society and government that a U.S. audience would not otherwise accept in a real-world setting.</p>
+</details>
+<details class="tile" data-topic="literature-and-film">
+  <summary><span class="tile-band"><span class="tile-topic">Literature and film</span></span><span class="tile-title">The Journey from Sexy to Dryer in <i>A Streetcar Named Desire</i>: The Effects of Sexual Censorship on a Deep Well of Passion</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">The 1951 film of <i>A Streetcar Named Desire</i> cut three defining moments of sexual expression from Tennessee Williams’s play: Stella’s return to Stanley, Blanche’s seduction of a young paperboy, and Stanley’s assault on Blanche. Comparing the play, the 1951 release, and the restored 1993 version, I argue that these cuts strip the characters of their motivations and hide the true source of trouble at 632 Elysian Fields: desire.</p>
+</details>
+<details class="tile" data-topic="literature-and-film">
+  <summary><span class="tile-band"><span class="tile-topic">Literature and film</span></span><span class="tile-title">Something Always Told Me I Wasn’t No Rich White Woman: Unpacking Race Representation in <i>A Raisin in the Sun</i></span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">I compare the 1961 film of <i>A Raisin in the Sun</i> with Hansberry’s unfilmed original screenplay, published in 1992, and argue that studio “white fear” shaped both what was filmed and how it was shot. Through those cuts and choices, a raw call for equality became an oversimplified “happy ending” meant to ease white guilt. Using critical media literacy, I look at how the film represents its Black characters, a studio memo addressing that fear, and race as the deciding factor in where the family can live.</p>
+</details>
+<details class="tile" data-topic="literature-and-film">
+  <summary><span class="tile-band"><span class="tile-topic">Literature and film</span></span><span class="tile-title">Empathy as a Driving Force for a Better Future: An Examination of the Retcon <i>X-Men: Days of Future Past</i> Through an Empathetic Lens</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs"><i>X-Men: Days of Future Past</i> (2014) asks viewers to empathize with mutants, a species that is entirely fictional, and in doing so it retcons a struggling film franchise. Drawing on Keen’s <i>Empathy and the Novel</i> and Stadler’s work on empathy in film, I close-read three moments, ending with the conversation between the older and younger Xavier, which I argue is the film’s most empathetic. Mutants can stand in for the Other, telling those stories without the confrontation of direct political speech.</p>
+</details>
+<details class="tile" data-topic="literature-and-film">
+  <summary><span class="tile-band"><span class="tile-topic">Literature and film</span></span><span class="tile-title">Six Years of Scheming and Stalling and Screaming; One Week of Awakening, Awareness and Action: The Abandonment of Law at the Precipice of Finality</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">Tony Gilroy’s <i>Michael Clayton</i> (2007) follows three attorneys through a class action lawsuit in which the defendant really is guilty. Adapting law professor Monroe Freedman’s “trilemma,” I weigh each attorney’s choices against three duties: to the client, to the public trust, and to their own conscience. I argue that the party most responsible is not any one attorney but the law firm of Kenner, Bach and Ledeen, the corrupt system behind them.</p>
+</details>
+<details class="tile" data-topic="teaching-writing">
+  <summary><span class="tile-band"><span class="tile-topic">Teaching writing</span></span><span class="tile-title">My Ideas on Composition Theory and Pedagogy</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">A complete course package for first-year college writing, with documents for students and documents for administrators and teachers. The course teaches expository writing through revision and critical reading of multimodal texts, including the films <i>The Fifth Element</i>, <i>Moonlight</i>, <i>A Raisin in the Sun</i>, <i>Inherit the Wind</i>, <i>Sicario</i>, and <i>Sonic the Hedgehog</i>. Its rationale gives everyone, teacher and students alike, permission to point out mistakes, and sets the classroom up as a “brave space.”</p>
+</details>
+<details class="tile" data-topic="teaching-writing">
+  <summary><span class="tile-band"><span class="tile-topic">Teaching writing</span></span><span class="tile-title">Re-evaluating “Basic” and “College-Ready” Writers Against Refreshed Rubrics</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">Students labeled “basic” writers may fail standardized tests and still have creative, analytical skill. Building on Bartholomae’s “Inventing the University,” this research proposal would track 1,000 anonymous Texas students over two academic years, half admitted directly into first-year composition and half placed on a developmental path, with two groups of graders and GPAs compared over six years.</p>
+</details>
+<details class="tile" data-topic="teaching-writing">
+  <summary><span class="tile-band"><span class="tile-topic">Teaching writing</span></span><span class="tile-title">Multicultural Children’s Literature</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">I review children’s books that represent students too often left out of the classroom: children with same-sex parents, Japanese Americans and the history of internment (in a book by George Takei), Black hair and what its styles mean, Deaf characters who use ASL and act on their own, and Palestinian perspectives. For each, I explain why the representation matters, both for students who see themselves in it and for classmates who may not know each other’s lives.</p>
+</details>
+<details class="tile" data-topic="the-university">
+  <summary><span class="tile-band"><span class="tile-topic">The university</span></span><span class="tile-title">Tenure and Neoliberal Fear: A Close Reading of a Viral Faculty Speech</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">When a tenured professor’s speech goes viral, how fast and how uniformly a university responds can be read as a sign of neoliberal fear. Drawing on Gerdes’s <i>Sensitive Rhetorics</i> and Ahmed’s <i>Complaint!</i>, I build a matrix of five fears (collective solidarity, incivility, structural indictment, utopian demand, and public good versus commodities) and use it to close-read one such speech. Structural indictment appears most often.</p>
+</details>
+<details class="tile" data-topic="the-university">
+  <summary><span class="tile-band"><span class="tile-topic">The university</span></span><span class="tile-title">“Blacks Running Around with Guns is Scary” and Other Protected Hate Speech: Tenure and “Academic Freedom” as a Shield for Atrocious Classroom Behavior</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">This autoethnography examines how tenure and academic freedom shielded a professor, called “Dr. Juan Doe,” whose classroom speech misgendered students and made light of race, sexuality, and trauma. Using group chats, emails, and written testimony as artifacts, I describe what happened, my own position, and my fear of writing the piece.</p>
+</details>
+<details class="tile" data-topic="personal-essays">
+  <summary><span class="tile-band"><span class="tile-topic">Personal essays</span></span><span class="tile-title">The Homosexual Known as John Doe: An Empathetic Look at the Intersection of John Doe’s Coming Out and His Exposure to Thai BL</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">Framed as a church service, this personal essay traces how a restrictive Oneness Apostolic upbringing built a “self-imposed imprisonment” around my sexuality, and how empathy for fictional characters in Thai BL helped start my healing. The order of service runs through leaving organized religion while trying to keep my faith, coming out with no more compartmentalizing, finding a new faith and a new “ideal” (Freud’s ego-ideal), and confronting negative self-talk.</p>
+</details>
+<details class="tile" data-topic="personal-essays">
+  <summary><span class="tile-band"><span class="tile-topic">Personal essays</span></span><span class="tile-title">I Didn’t Die, but I Didn’t Live: Being Gay &amp; Suicidal at the Intersection of Education, Religion &amp; Family</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">This autoethnography returns to my sixth-grade year to look at how five systems responded to a gay, suicidal child: school, an outpatient mental health facility, the church, child protective services, and my family. The systems worked at first, because I survived. Afterward they failed, labeling me learning disabled instead of making room for who I was.</p>
+</details>
+<details class="tile" data-topic="personal-essays">
+  <summary><span class="tile-band"><span class="tile-topic">Personal essays</span></span><span class="tile-title">How I Write</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">I speak and write in different registers and accents depending on who is listening: church elders, my mother, my sister, academic friends, my Thai teacher. This short reflection traces those registers back to a multicultural church in Austin with members from over 30 countries, and to Texas public schools, and explains why I audited a grammar course while writing my thesis.</p>
+</details>
+<details class="tile" data-topic="personal-essays">
+  <summary><span class="tile-band"><span class="tile-topic">Personal essays</span></span><span class="tile-title">Me, A Writing Researcher?: A Main Title Sort of Taken from Ann Blakeslee and Cathy Fleischer</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">Using Blakeslee and Fleischer’s <i>Becoming a Writing Researcher</i>, I trace my path as a researcher: leaving a restrictive Oneness Apostolic church in 2019, finding Thai BL through <i>SOTUS</i> and <i>Love Sick</i>, and writing my MA autoethnography as a fan. I close by asking how much of that story belongs in a dissertation at all.</p>
+</details>
+<details class="tile" data-topic="professional-and-applied">
+  <summary><span class="tile-band"><span class="tile-topic">Professional and applied</span></span><span class="tile-title">The Personal Code of Ethics for Richard Dixon Riddle, Technical Communicator</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">My code rests on four values: clarity, integrity, humor, and compassion for anyone who has to read technical documentation. Using Black gospel music as a running comparison, I set out duties to the requester, to the unknown future reader, and to myself, including refusing work that harms the vulnerable and staying aware of how technical knowledge has been misused.</p>
+</details>
+<details class="tile" data-topic="professional-and-applied">
+  <summary><span class="tile-band"><span class="tile-topic">Professional and applied</span></span><span class="tile-title">Grant Strategy Audit for an Undisclosed Nonprofit</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">Over a semester, I worked with a graduate research team to audit a nonprofit’s grant writing. The final package includes a strategy memo on rhetorical positioning, financial landscape, and market alignment; revisions to active proposals; and a toolkit of twenty principles for future applications, built on the idea that everything in a grant, including the budget, has rhetorical potential.</p>
+</details>
+<details class="tile" data-topic="professional-and-applied">
+  <summary><span class="tile-band"><span class="tile-topic">Professional and applied</span></span><span class="tile-title">Framework Pivot: Auditing a Research Grant Proposal</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">This presentation shows how I audited my own research grant proposal. A pilot test of แม่ค้า (mâe káa) showed that a licensed subtitle and three LLMs all lose its gender recognition. Three audit methods (a “mad-lib” test, a funder FAQ check, and three hostile reviewer personas) exposed gaps in the budget and timeline, and an equity rewrite recast Thai scholars as credited expert consultants instead of hourly validators.</p>
+</details>
+<details class="tile" data-topic="professional-and-applied">
+  <summary><span class="tile-band"><span class="tile-topic">Professional and applied</span></span><span class="tile-title"><i>Computers &amp; Composition</i>: An Academic Journal Profile</span><span class="tile-more">Read abstract</span></summary>
+  <p class="abs">A profile of <i>Computers and Composition</i> based on volumes 80 (a 40th-anniversary special volume) and 81, which hold 28 research articles. It maps the journal’s scope, from composing in AI-mediated environments to writing pedagogy, critical AI literacies, public rhetoric, and human-centered design, and shows how AI is reopening its long-running debates about access, agency, and power.</p>
+</details>
+    </div>
+  </section>
+
+  <section id="teaching" data-views="family peers" aria-labelledby="teach-h">
+    <div class="sec-head"><h2 id="teach-h">Classes I Teach <span class="draft">Draft</span></h2></div>
+    <div class="teach">
+      <div><h3>First-year composition</h3><p>College writing I and II: expository writing, argument, research, and revision.</p></div>
+      <div><h3>Technical writing</h3><p>Introduction to technical communication, with an emphasis on ethics and audience.</p></div>
+      <div><h3>Formats</h3><p>In person, synchronous online, and asynchronous online.</p></div>
+    </div>
+  </section>
+
+  <section id="training" data-views="peers" aria-labelledby="train-h">
+    <div class="sec-head">
+      <h2 id="train-h">Human Subjects Training</h2>
+      <p>Current certifications for research with people. Years are completion dates.</p>
+    </div>
+    <div class="certs">
+<div class="cert-group"><h3>Human subjects</h3><ul><li><span class="cert">Human Subject Protection Training (Group 1)</span><span class="cert-date">2026 · expires 2029</span></li><li><span class="cert">Vulnerable Populations in Human Subject Research (Group 2)</span><span class="cert-date">2026 · expires 2029</span></li><li><span class="cert">Social and Behavioral Research, Basic and Refresher</span><span class="cert-date">2026 · expires 2028</span></li><li><span class="cert">Human Research Protection Program Certification, Texas Tech University</span><span class="cert-date">2026</span></li></ul></div>
+<div class="cert-group"><h3>Responsible conduct of research</h3><ul><li><span class="cert">Humanities Responsible Conduct of Research</span><span class="cert-date">2025, 2026 · expires 2029</span></li><li><span class="cert">Social and Behavioral Responsible Conduct of Research</span><span class="cert-date">2025</span></li></ul></div>
+<div class="cert-group"><h3>Funded research</h3><ul><li><span class="cert">Investigator: Principal Investigator or Key Personnel (NSF, NIH, USDA)</span><span class="cert-date">2026 · expires 2030</span></li><li><span class="cert">Post Grad (NSF, NIH, USDA)</span><span class="cert-date">2026 · expires 2030</span></li><li><span class="cert">Conflicts of Interest</span><span class="cert-date">2026 · expires 2030</span></li><li><span class="cert">Export Controls</span><span class="cert-date">2026</span></li></ul></div>
+<div class="cert-group"><h3>Privacy</h3><ul><li><span class="cert">Information Privacy Security Basics</span><span class="cert-date">2026 · expires 2029</span></li><li><span class="cert">Researcher and Health Privacy</span><span class="cert-date">2026 · expires 2029</span></li></ul></div>
+<div class="cert-group"><h3>Other</h3><ul><li><span class="cert">COVID-19: Participating in Vaccine Research</span><span class="cert-date">2026</span></li></ul></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-h">
+    <div class="sec-head"><h2 id="contact-h">Contact</h2></div>
+    <p>The best way to reach me is on <a href="https://www.linkedin.com/in/richardriddle" target="_blank" rel="noopener">LinkedIn</a>.</p>
+  </section>
+
+  <footer>
+    <span>© 2026 Rich Riddle</span>
+    <span>Built with help from Claude and ChatGPT.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var NOTES = {
+    everyone: "Everything on the site, top to bottom.",
+    family: "The short version: what I do, how a project grows, and what has come of it.",
+    peers: "Research, studies, every abstract, and my human subjects training."
+  };
+  var viewBtns = document.querySelectorAll(".seg button");
+  var blocks = document.querySelectorAll("[data-views]");
+  function setView(v, push) {
+    if (!NOTES[v]) v = "everyone";
+    viewBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.view === v)); });
+    blocks.forEach(function (el) {
+      var list = el.dataset.views.split(" ");
+      el.hidden = !(v === "everyone" || list.indexOf(v) > -1);
+    });
+    document.getElementById("view-note").textContent = NOTES[v];
+    if (push) { try { history.replaceState(null, "", "#" + v); } catch (e) {} }
+  }
+  viewBtns.forEach(function (b) { b.addEventListener("click", function () { setView(b.dataset.view, true); }); });
+
+  // Nav links to a hidden section switch back to everything.
+  document.querySelectorAll("nav.top a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var t = document.querySelector(a.getAttribute("href"));
+      if (t && t.hidden) setView("everyone", false);
+    });
+  });
+
+  // Topic filter
+  var chips = document.querySelectorAll(".chip");
+  var tiles = document.querySelectorAll(".tile");
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      var t = c.dataset.topic;
+      chips.forEach(function (x) { x.setAttribute("aria-pressed", String(x === c)); });
+      tiles.forEach(function (el) { el.hidden = !(t === "all" || el.dataset.topic === t); });
+    });
+  });
+
+  var start = (location.hash || "").replace("#", "");
+  setView(NOTES[start] ? start : "everyone", false);
+})();
+</script>
+
+</body>
+</html>
