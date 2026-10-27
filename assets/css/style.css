@@ -260,6 +260,7 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 .dogs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px; margin-top: 18px; align-items: start; }
 .dogs figure { margin: 0; }
 .dogs figcaption { font-family: var(--display); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
-.gif { margin: 24px 0 0; max-width: 540px; }
+.gif { margin: 24px auto 0; max-width: 540px; text-align: center; }
 .gif img { display: block; width: 100%; height: auto; }
 .gif figcaption { font-family: var(--display); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.dog-note { margin-top: 24px; }
