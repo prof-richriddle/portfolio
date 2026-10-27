@@ -3,7 +3,7 @@ layout: default
 title: About Me
 ---
 <!-- ===== ABOUT ME (edit the text on this page) ===== -->
-<div class="page-head"><h1>About Me</h1></div>
+<div class="page-head"><h1>About Me</h1><p class="page-sub">Life &amp; Teaching</p></div>
 
 <figure class="banner">
   <img src="{{ '/assets/images/about-banner.jpg' | relative_url }}" width="1800" height="600" alt="A collage of nine photos of Rich Riddle: in front of a wood door; a selfie with a giant silver robot statue; a large black-and-white portrait in the center; in front of an ornate gold temple statue; in a stairwell with a backpack; in a Star Trek T-shirt; smiling in a blue T-shirt with a rainbow stripe; in a graduation cap and gown; and in a sparkly sweater by a Christmas tree.">
@@ -31,6 +31,32 @@ title: About Me
     <div><h3>Technical communication</h3><p>Creating clear, usable documents for professional audiences, with an emphasis on ethical communication and effective design.</p></div>
     <div><h3>Writing for international students</h3><p>Helping international students navigate the expectations of college writing and develop their academic voices.</p></div>
     <div><h3>Teaching formats</h3><p>In person, synchronous online, and asynchronous online.</p></div>
+  </div>
+</section>
+
+<!-- ===== CLASS ACTIVITIES (comes from the _activities folder) ===== -->
+{% assign activities = site.activities | sort: "order" %}
+<section id="activities" class="activities" aria-labelledby="act-h">
+  <div class="sec-head">
+    <h2 id="act-h">Class Activities</h2>
+    <p>A few of the activities I use in class. Open any tile to see how it works.</p>
+  </div>
+  <div class="grid">
+    {% for a in activities %}
+    <details class="tile" data-topics="{% for t in a.topics %}{{ t | slugify }} {% endfor %}">
+      <summary>
+        {% if a.image %}
+        <img class="tile-img" src="{{ '/assets/images/' | append: a.image | relative_url }}" alt="" loading="lazy">
+        {% else %}
+        <span class="tile-band"><span class="tile-topic">{{ a.topics | join: " · " }}</span></span>
+        {% endif %}
+        <span class="kind">Class activity{% if a.note %} · {{ a.note }}{% endif %}</span>
+        <span class="tile-title">{{ a.title }}</span>
+        <span class="tile-more">See how it works</span>
+      </summary>
+      <div class="abs activity-body">{{ a.content }}</div>
+    </details>
+    {% endfor %}
   </div>
 </section>
 

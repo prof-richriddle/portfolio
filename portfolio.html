@@ -7,7 +7,8 @@ title: Portfolio
 
 <div class="page-head">
   <h1>Portfolio</h1>
-  <p>Forthcoming publications, ongoing studies, writing samples, abstracts of my graduate coursework, class activities, and certifications. Pick a type, then narrow it by topic.</p>
+  <p class="page-sub">Research &amp; Writing</p>
+  <p>Forthcoming publications, ongoing studies, writing samples, coursework, and certifications. Pick a type, then narrow it by topic.</p>
 </div>
 
 <div class="controls">
@@ -17,8 +18,7 @@ title: Portfolio
       <button type="button" id="type-all" data-show="all" aria-pressed="true">Show all</button>
       <button type="button" id="type-major" data-show="major" aria-pressed="false">Major Work</button>
       <button type="button" id="type-samples" data-show="samples" aria-pressed="false">Writing Samples</button>
-      <button type="button" id="type-abstracts" data-show="abstracts" aria-pressed="false">Abstracts</button>
-      <button type="button" id="type-activities" data-show="activities" aria-pressed="false">Class Activities</button>
+      <button type="button" id="type-coursework" data-show="coursework" aria-pressed="false">Coursework</button>
       <button type="button" id="type-certifications" data-show="certifications" aria-pressed="false">Certifications</button>
     </div>
   </div>
@@ -93,12 +93,12 @@ title: Portfolio
   </div>
 </section>
 
-<!-- ===== ABSTRACTS (comes from the _works folder) ===== -->
+<!-- ===== COURSEWORK (comes from the _works folder) ===== -->
 {% assign works = site.works | sort: "order" %}
-<section id="abstracts" data-type="abstracts" aria-labelledby="course-h">
+<section id="coursework" data-type="coursework" aria-labelledby="course-h">
   <div class="sec-head">
-    <h2 id="course-h">Abstracts</h2>
-    <p>{{ works.size }} papers, presentations, and projects from graduate school. Open any tile to read its abstract.</p>
+    <h2 id="course-h">Coursework</h2>
+    <p>{{ works.size }} papers, presentations, and projects from my graduate classes, each with a short summary.</p>
   </div>
   <div class="grid">
     {% for w in works %}
@@ -110,40 +110,13 @@ title: Portfolio
         <span class="tile-band"><span class="tile-topic">{{ w.topics | join: " · " }}</span></span>
         {% endif %}
         <span class="tile-title">{{ w.title }}</span>
-        <span class="tile-more">Read abstract</span>
+        <span class="tile-more">Read summary</span>
       </summary>
       <p class="abs">{{ w.content | strip | remove: "<p>" | remove: "</p>" }}</p>
     </details>
     {% endfor %}
   </div>
-  <p class="empty" hidden>No abstracts have that topic.</p>
-</section>
-
-<!-- ===== CLASS ACTIVITIES (comes from the _activities folder) ===== -->
-{% assign activities = site.activities | sort: "order" %}
-<section id="activities" data-type="activities" aria-labelledby="act-h">
-  <div class="sec-head">
-    <h2 id="act-h">Class Activities</h2>
-    <p>A few of the activities I use in class. Open any tile to see how it works.</p>
-  </div>
-  <div class="grid">
-    {% for a in activities %}
-    <details class="tile" data-topics="{% for t in a.topics %}{{ t | slugify }} {% endfor %}">
-      <summary>
-        {% if a.image %}
-        <img class="tile-img" src="{{ '/assets/images/' | append: a.image | relative_url }}" alt="" loading="lazy">
-        {% else %}
-        <span class="tile-band"><span class="tile-topic">{{ a.topics | join: " · " }}</span></span>
-        {% endif %}
-        <span class="kind">Class activity{% if a.note %} · {{ a.note }}{% endif %}</span>
-        <span class="tile-title">{{ a.title }}</span>
-        <span class="tile-more">See how it works</span>
-      </summary>
-      <div class="abs activity-body">{{ a.content }}</div>
-    </details>
-    {% endfor %}
-  </div>
-  <p class="empty" hidden>No class activities have that topic.</p>
+  <p class="empty" hidden>No coursework has that topic.</p>
 </section>
 
 <!-- ===== CERTIFICATIONS (edit the list here) ===== -->

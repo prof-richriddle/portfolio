@@ -37,6 +37,7 @@
   });
 
   var start = (location.hash || "").replace("#", "");
-  if (["major", "samples", "abstracts", "activities", "certifications"].indexOf(start) > -1) state.show = start;
+  if (start === "abstracts") start = "coursework";
+  if (["major", "samples", "coursework", "certifications"].indexOf(start) > -1) state.show = start;
   apply();
 })();

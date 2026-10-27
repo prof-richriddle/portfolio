@@ -292,3 +292,5 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 .paper blockquote p { font-size: .98rem; }
 .toolkit { margin: 0; padding-left: 1.6em; display: grid; gap: 10px; }
 .toolkit li { font-size: 1.02rem; }
+.page-sub { font-family: var(--display); font-size: 1.15rem !important; letter-spacing: .02em; color: var(--muted); margin: 0; }
+.activities .grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); }
