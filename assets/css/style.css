@@ -263,4 +263,4 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 .gif { margin: 24px auto 0; max-width: 540px; text-align: center; }
 .gif img { display: block; width: 100%; height: auto; }
 .gif figcaption { font-family: var(--display); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
-.dog-note { margin-top: 24px; }
+.dog-note { margin-top: 24px; max-width: none; }
