@@ -63,10 +63,18 @@ title: Portfolio
 <section id="samples" data-type="samples" aria-labelledby="samples-h">
   <div class="sec-head">
     <h2 id="samples-h">Writing Samples</h2>
-    <p>Four pieces in full, each with a note on why it matters to where my work is going.</p>
+    <p>Pieces in full, each with a note on why it matters to where my work is going.</p>
   </div>
   <div class="samples">
-    {% for i in (1..4) %}
+    <!-- Writing sample 1 -->
+    <div class="sample">
+      <a href="{{ '/sample-air.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img class="sample-img" src="{{ '/assets/images/samples/air-4.jpg' | relative_url }}" alt="" loading="lazy"></a>
+      <p class="kind">Writing sample 1</p>
+      <h3><a href="{{ '/sample-air.html' | relative_url }}">Seeing Through <i>Air</i></a></h3>
+      <p class="teaser">Using critical media literacy to read whiteness in the 2023 film <i>Air</i>, and the questions I bring to film and digital media in my teaching.</p>
+      <a class="read" href="{{ '/sample-air.html' | relative_url }}" aria-label="Read the paper: Seeing Through Air">Read the paper</a>
+    </div>
+    {% for i in (2..4) %}
     <div class="sample">
       <div class="sample-band" aria-hidden="true"></div>
       <p class="kind">Writing sample {{ i }}</p>

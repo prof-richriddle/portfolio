@@ -88,7 +88,8 @@ section { padding-block: 44px; border-top: 1px solid var(--line); display: grid;
 .sample { display: grid; gap: 8px; align-content: start; min-width: 0; }
 .sample-img { display: block; width: 100%; max-width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .sample-band { aspect-ratio: 4 / 3; max-width: 100%; background: repeating-linear-gradient(135deg, var(--tile) 0 10px, var(--bg) 10px 20px); border: 1px dashed var(--line); }
-.sample h3 { font-size: 1rem; color: var(--muted); }
+.sample h3 { font-size: 1rem; }
+.sample-band + .kind + h3 { color: var(--muted); }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { font-size: .8rem; padding: 8px 11px; }
@@ -264,3 +265,22 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 .gif img { display: block; width: 100%; height: auto; }
 .gif figcaption { font-family: var(--display); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
 .dog-note { margin-top: 24px; max-width: none; }
+
+/* Writing sample pages */
+.paper { max-width: 44rem; display: grid; gap: 14px; padding-top: 36px; }
+.paper > .kind a { color: var(--accent); text-decoration: none; }
+.paper > .kind a:hover, .paper > .kind a:focus-visible { text-decoration: underline; }
+.paper h1 { font-size: clamp(1.4rem, 3.2vw, 2rem); line-height: 1.25; }
+.paper h2 { font-size: 1.3rem; margin-top: 18px; }
+.paper h3 { font-size: 1.08rem; margin-top: 8px; }
+.paper p { margin: 0; font-size: 1.02rem; }
+.paper img { display: block; width: 100%; height: auto; margin: 10px 0; border: 1px solid var(--line); }
+.why { position: relative; border: 1.5px solid var(--charcoal); border-radius: 12px; padding: 22px 20px 18px; display: grid; gap: 10px; margin: 8px 0 14px; overflow: hidden; }
+.why::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--pride); }
+.why h2 { margin: 0; font-size: 1.1rem; }
+.note { font-size: .9rem !important; color: var(--muted); }
+.refs { display: grid; gap: 8px; }
+.refs p { font-size: .92rem; padding-left: 2em; text-indent: -2em; overflow-wrap: anywhere; }
+.sample a.read { font-family: var(--display); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.sample p.teaser { margin: 0; font-size: .93rem; }
+.sample h3 a { color: var(--fg); text-decoration: none; } .sample h3 a:hover, .sample h3 a:focus-visible { text-decoration: underline; }
