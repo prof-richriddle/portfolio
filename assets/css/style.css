@@ -290,3 +290,5 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 .fig-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px; align-items: start; }
 .paper blockquote { margin: 0 0 0 2em; }
 .paper blockquote p { font-size: .98rem; }
+.toolkit { margin: 0; padding-left: 1.6em; display: grid; gap: 10px; }
+.toolkit li { font-size: 1.02rem; }
