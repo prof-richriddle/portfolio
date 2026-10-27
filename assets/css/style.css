@@ -284,3 +284,9 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 .sample a.read { font-family: var(--display); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
 .sample p.teaser { margin: 0; font-size: .93rem; }
 .sample h3 a { color: var(--fg); text-decoration: none; } .sample h3 a:hover, .sample h3 a:focus-visible { text-decoration: underline; }
+.paper .fig { margin: 6px 0; }
+.paper .fig img { margin: 0; }
+.paper .fig figcaption { font-size: .85rem; font-style: italic; color: var(--muted); margin-top: 6px; text-align: center; }
+.fig-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px; align-items: start; }
+.paper blockquote { margin: 0 0 0 2em; }
+.paper blockquote p { font-size: .98rem; }

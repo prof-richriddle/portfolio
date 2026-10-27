@@ -74,7 +74,15 @@ title: Portfolio
       <p class="teaser">Using critical media literacy to read whiteness in the 2023 film <i>Air</i>, and the questions I bring to film and digital media in my teaching.</p>
       <a class="read" href="{{ '/sample-air.html' | relative_url }}" aria-label="Read the paper: Seeing Through Air">Read the paper</a>
     </div>
-    {% for i in (2..4) %}
+    <!-- Writing sample 2 -->
+    <div class="sample">
+      <a href="{{ '/sample-bangkok.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img class="sample-img" src="{{ '/assets/images/samples/bkk-tuktuk.jpg' | relative_url }}" alt="" loading="lazy"></a>
+      <p class="kind">Writing sample 2</p>
+      <h3><a href="{{ '/sample-bangkok.html' | relative_url }}">Bangkok: Observation and Discovery</a></h3>
+      <p class="teaser">An excerpt from my M.A. thesis on Thai BL: my first trip to Thailand, and what years of Thai TV had already taught me to see there.</p>
+      <a class="read" href="{{ '/sample-bangkok.html' | relative_url }}" aria-label="Read the excerpt: Bangkok, Observation and Discovery">Read the excerpt</a>
+    </div>
+    {% for i in (3..4) %}
     <div class="sample">
       <div class="sample-band" aria-hidden="true"></div>
       <p class="kind">Writing sample {{ i }}</p>
