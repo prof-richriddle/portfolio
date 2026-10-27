@@ -243,3 +243,13 @@ nav.top a[aria-current="page"] { color: var(--accent); }
     border-top: 11px solid transparent; border-bottom: 11px solid transparent; border-left: 18px solid var(--p6); border-right: 0;
   }
 }
+
+/* about me + read me + activities */
+.bio { display: grid; gap: 14px; max-width: 42rem; border-top: 0; padding-top: 0; }
+.bio p { margin: 0; font-size: 1.05rem; }
+.readme { display: grid; gap: 14px; max-width: 42rem; }
+.readme p, .readme ol { margin: 0; }
+.readme ol { padding-left: 1.2em; display: grid; gap: 6px; }
+.activity-body { font-size: .92rem; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); display: grid; gap: 8px; }
+.activity-body p, .activity-body ol { margin: 0; }
+.activity-body ol { padding-left: 1.2em; display: grid; gap: 4px; }

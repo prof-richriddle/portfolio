@@ -9,3 +9,5 @@ collections:
     output: false
   major:
     output: false
+  activities:
+    output: false
