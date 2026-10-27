@@ -8,7 +8,18 @@ title: Friends & Family
   <p>As a doctoral student, I move through three stages: coursework, qualifying exams, and the dissertation. At any of those stages, what I’m studying can become a conference paper (a presentation), and a conference paper can become an article or a chapter in a book. There’s no single path from one to the next. Here’s how one project made the trip.</p>
 </div>
 
-<section aria-label="One project, start to finish">
+<div class="controls">
+  <div class="control-row">
+    <span class="control-label" id="type-label">Show</span>
+    <div class="seg" role="group" aria-labelledby="type-label">
+      <button type="button" id="type-all" data-show="all" aria-pressed="true">Show all</button>
+      <button type="button" id="type-progression" data-show="progression" aria-pressed="false">The Progression of Research</button>
+      <button type="button" id="type-status" data-show="status" aria-pressed="false">My Current Status</button>
+    </div>
+  </div>
+</div>
+
+<section data-type="progression" aria-label="One project, start to finish">
   <ol class="steps">
     <li><h3>A class proposal</h3><p>Fall 2025: a semester project proposal on the Thai series <i>Khemjira</i> as a site for studying Thai rhetoric, written for a history of rhetoric seminar.</p></li>
     <li><h3>A conference talk</h3><p>March 2026: “<i>Khemjira Must Survive</i>: Queer Longing and Thai Spirituality at the Intersection of Thai Rhetoric,” at the Gods and Monsters Conference.</p></li>
@@ -16,12 +27,12 @@ title: Friends & Family
   </ol>
 </section>
 
-<section class="next">
+<section class="next" data-type="progression">
   <a class="big-btn big-btn--main" href="{{ '/portfolio.html' | relative_url }}"><span class="big-label">Now see the portfolio →</span><span class="big-sub">Research &amp; Writing: major work, writing samples, and coursework</span></a>
 </section>
 
 <!-- ===== WHAT EACH STAGE MEANS (edit the text here) ===== -->
-<section aria-labelledby="stages-h">
+<section data-type="status" aria-labelledby="stages-h">
   <div class="sec-head"><h2 id="stages-h">What each stage means</h2></div>
   <div class="teach">
     <div><h3>Coursework</h3><p>Each class meets live once a week for three hours, after I’ve read roughly 100 pages of joy. Along the way I write reading responses, project proposals, and presentations, and each class ends with a final semester project.</p></div>
@@ -33,7 +44,7 @@ title: Friends & Family
 <!-- ===== WHERE I AM NOW =====
      To move the purple triangle, change data-current below to the number of the stage you're in:
      1 = apply, 2 = coursework, 3 = qualifying exams, 4 = dissertation research, 5 = writing and defending, 6 = hooding -->
-<section aria-labelledby="now-h">
+<section data-type="status" aria-labelledby="now-h">
   <div class="sec-head"><h2 id="now-h">Where I am now</h2></div>
   <ol class="timeline" data-current="2">
     <li><span class="tl-when">Fall 2024</span><span class="tl-what">Apply to the program</span></li>

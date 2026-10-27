@@ -1,5 +1,5 @@
 (function () {
-  // Portfolio page only: type buttons and topic filters.
+  // Any page with Show buttons: type buttons, plus topic filters where they exist.
   var typeBtns = document.querySelectorAll("[data-show]");
   var chips = document.querySelectorAll(".chip");
   if (!typeBtns.length) return;
@@ -38,6 +38,6 @@
 
   var start = (location.hash || "").replace("#", "");
   if (start === "abstracts") start = "coursework";
-  if (["major", "samples", "coursework", "certifications"].indexOf(start) > -1) state.show = start;
+  if (start && document.querySelector('[data-show="' + start + '"]')) state.show = start;
   apply();
 })();

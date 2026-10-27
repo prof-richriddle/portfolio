@@ -5,17 +5,28 @@ title: About Me
 <!-- ===== ABOUT ME (edit the text on this page) ===== -->
 <div class="page-head"><h1>About Me</h1><p class="page-sub">Life &amp; Teaching</p></div>
 
+<div class="controls">
+  <div class="control-row">
+    <span class="control-label" id="type-label">Show</span>
+    <div class="seg" role="group" aria-labelledby="type-label">
+      <button type="button" id="type-all" data-show="all" aria-pressed="true">Show all</button>
+      <button type="button" id="type-personal" data-show="personal" aria-pressed="false">Personal Thoughts &amp; Family</button>
+      <button type="button" id="type-teaching" data-show="teaching" aria-pressed="false">Teaching Examples &amp; Philosophy</button>
+    </div>
+  </div>
+</div>
+
 <figure class="banner">
   <img src="{{ '/assets/images/about-banner.jpg' | relative_url }}" width="1800" height="600" alt="A collage of nine photos of Rich Riddle: in front of a wood door; a selfie with a giant silver robot statue; a large black-and-white portrait in the center; in front of an ornate gold temple statue; in a stairwell with a backpack; in a Star Trek T-shirt; smiling in a blue T-shirt with a rainbow stripe; in a graduation cap and gown; and in a sparkly sweater by a Christmas tree.">
 </figure>
 
-<section class="bio" aria-label="About me">
+<section class="bio" data-type="personal" aria-label="About me">
   <p>I was a bit aimless as a college student until I found my love for English. Then I found rhetoric and composition, and everything changed. Forever.</p>
   <p>I teach writing &amp; rhetoric and technical communication, and I’m a doctoral student at Texas Tech University, pursuing a Ph.D. in Technical Communication and Rhetoric. I hold an M.A. in Rhetoric and Composition from Texas State University.</p>
   <p>My interests vary from Thai rhetoric and TV to queerness at large, and from creative pedagogies that bring students’ attention back into the process, to what AI does to language and meaning.</p>
 </section>
 
-<section aria-labelledby="how-h">
+<section data-type="teaching" aria-labelledby="how-h">
   <div class="sec-head"><h2 id="how-h">How I Work</h2></div>
   <div class="bio">
     <p>I teach university courses on writing &amp; rhetoric, and technical communication. In my classes, students learn to give opposing arguments a fair hearing; they defend the side they disagree with as well as the one they first connected to. They also learn to break an argument into parts: the claim, the evidence for it, and the warrant (the often unstated assumption that links the two). Classic texts stay on the table, and so does the right to question them. Our families, communities, and society at large shape what we accept as true, so what feels like common sense often rests on assumptions our communities have taught us to take for granted. My job is to keep asking “How do you know?” no matter which side a claim comes from.</p>
@@ -23,7 +34,7 @@ title: About Me
   </div>
 </section>
 
-<section aria-labelledby="teach-h">
+<section data-type="teaching" aria-labelledby="teach-h">
   <div class="sec-head"><h2 id="teach-h">Classes I Teach</h2></div>
   <div class="teach">
     <div><h3>Writing &amp; rhetoric</h3><p>Exploring ideas through critical reading, purposeful writing, and revision, with attention to audience, context, and purpose.</p></div>
@@ -36,7 +47,7 @@ title: About Me
 
 <!-- ===== CLASS ACTIVITIES (comes from the _activities folder) ===== -->
 {% assign activities = site.activities | sort: "order" %}
-<section id="activities" class="activities" aria-labelledby="act-h">
+<section id="activities" class="activities" data-type="teaching" aria-labelledby="act-h">
   <div class="sec-head">
     <h2 id="act-h">Class Activities</h2>
     <p>A few of the activities I use in class. Open any tile to see how it works.</p>
@@ -60,7 +71,7 @@ title: About Me
   </div>
 </section>
 
-<section aria-labelledby="dogs-h">
+<section data-type="personal" aria-labelledby="dogs-h">
   <div class="sec-head"><h2 id="dogs-h">The Dogs</h2></div>
   <div class="dogs">
     <figure>
