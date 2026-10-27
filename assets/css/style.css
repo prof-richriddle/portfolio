@@ -253,3 +253,10 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 .activity-body { font-size: .92rem; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); display: grid; gap: 8px; }
 .activity-body p, .activity-body ol { margin: 0; }
 .activity-body ol { padding-left: 1.2em; display: grid; gap: 4px; }
+
+/* About Me photos */
+.banner { margin: 0 0 8px; }
+.banner img, .dogs img { display: block; width: 100%; height: auto; }
+.dogs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px; margin-top: 18px; align-items: start; }
+.dogs figure { margin: 0; }
+.dogs figcaption { font-family: var(--display); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
