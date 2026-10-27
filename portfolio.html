@@ -3,7 +3,7 @@ layout: default
 title: Portfolio
 ---
 {% comment %} ===== TOPIC TAGS: add, rename, or remove tags here (separated by | ) ===== {% endcomment %}
-{% assign tag_list = "Film & TV|Thai|Queer|Religion & Spirituality|AI & translation|Teaching|Tech comm|Personal essays" | split: "|" %}
+{% assign tag_list = "Film & TV|Thai|Queer|Religion & Spirituality|AI & translation|Teaching|Tech comm|Personal essays|University Life" | split: "|" %}
 
 <div class="page-head">
   <h1>Portfolio</h1>
@@ -67,7 +67,7 @@ title: Portfolio
   </div>
   <div class="samples">
     <!-- Writing sample 1 -->
-    <div class="sample">
+    <div class="sample" data-topics="film-tv teaching">
       <a href="{{ '/sample-air.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img class="sample-img" src="{{ '/assets/images/samples/air-4.jpg' | relative_url }}" alt="" loading="lazy"></a>
       <p class="kind">Writing sample 1</p>
       <h3><a href="{{ '/sample-air.html' | relative_url }}">Seeing Through <i>Air</i></a></h3>
@@ -75,7 +75,7 @@ title: Portfolio
       <a class="read" href="{{ '/sample-air.html' | relative_url }}" aria-label="Read the paper: Seeing Through Air">Read the paper</a>
     </div>
     <!-- Writing sample 2 -->
-    <div class="sample">
+    <div class="sample" data-topics="thai queer film-tv personal-essays">
       <a href="{{ '/sample-bangkok.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img class="sample-img" src="{{ '/assets/images/samples/bkk-tuktuk.jpg' | relative_url }}" alt="" loading="lazy"></a>
       <p class="kind">Writing sample 2</p>
       <h3><a href="{{ '/sample-bangkok.html' | relative_url }}">Bangkok: Observation and Discovery</a></h3>
@@ -83,7 +83,7 @@ title: Portfolio
       <a class="read" href="{{ '/sample-bangkok.html' | relative_url }}" aria-label="Read the excerpt: Bangkok, Observation and Discovery">Read the excerpt</a>
     </div>
     <!-- Writing sample 3 -->
-    <div class="sample">
+    <div class="sample" data-topics="tech-comm">
       <a href="{{ '/sample-grants.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img class="sample-img" src="{{ '/assets/images/samples/sample-grants.jpg' | relative_url }}" alt="" loading="lazy"></a>
       <p class="kind">Writing sample 3</p>
       <h3><a href="{{ '/sample-grants.html' | relative_url }}">The Grant Writer’s Toolkit</a></h3>
@@ -91,6 +91,7 @@ title: Portfolio
       <a class="read" href="{{ '/sample-grants.html' | relative_url }}" aria-label="Read the toolkit: The Grant Writer’s Toolkit">Read the toolkit</a>
     </div>
   </div>
+  <p class="empty" hidden>No writing samples have that topic.</p>
 </section>
 
 <!-- ===== COURSEWORK (comes from the _works folder) ===== -->

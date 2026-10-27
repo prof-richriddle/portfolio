@@ -1,6 +1,6 @@
 ---
 title: "Tenure and Neoliberal Fear: A Close Reading of a Viral Faculty Speech"
-topics: []
+topics: ["University Life"]
 image: tiles/tenure-fear.jpg
 order: 16
 ---

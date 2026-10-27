@@ -1,6 +1,6 @@
 ---
 title: "“Blacks Running Around with Guns is Scary” and Other Protected Hate Speech: Tenure and “Academic Freedom” as a Shield for Atrocious Classroom Behavior"
-topics: ["Personal essays", "Queer"]
+topics: ["Personal essays", "Queer", "University Life"]
 image: tiles/protected-speech.jpg
 order: 17
 ---
