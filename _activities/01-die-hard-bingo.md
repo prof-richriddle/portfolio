@@ -2,7 +2,7 @@
 title: "Die Hard Bingo"
 topics: ["Teaching", "Film & TV"]
 note: "Takes a few class periods"
-image:
+image: tiles/die-hard-bingo.jpg
 order: 1
 ---
 1. Students decide what makes something a Christmas movie, and explain why.

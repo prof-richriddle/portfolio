@@ -1,7 +1,7 @@
 ---
 title: "Would You Rather"
 topics: ["Teaching", "Tech comm"]
-image:
+image: tiles/would-you-rather.jpg
 order: 2
 ---
 A “Would You Rather” question forces a choice between two imperfect options, which is the core of argument: take a position, give a reason, defend it.
