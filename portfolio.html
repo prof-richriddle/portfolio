@@ -82,7 +82,15 @@ title: Portfolio
       <p class="teaser">An excerpt from my M.A. thesis on Thai BL: my first trip to Thailand, and what years of Thai TV had already taught me to see there.</p>
       <a class="read" href="{{ '/sample-bangkok.html' | relative_url }}" aria-label="Read the excerpt: Bangkok, Observation and Discovery">Read the excerpt</a>
     </div>
-    {% for i in (3..4) %}
+    <!-- Writing sample 3 -->
+    <div class="sample">
+      <a href="{{ '/sample-grants.html' | relative_url }}" tabindex="-1" aria-hidden="true"><img class="sample-img" src="{{ '/assets/images/samples/grant-handout.png' | relative_url }}" alt="" loading="lazy" style="object-position: top"></a>
+      <p class="kind">Writing sample 3</p>
+      <h3><a href="{{ '/sample-grants.html' | relative_url }}">The Grant Writer’s Toolkit</a></h3>
+      <p class="teaser">Twenty principles for treating every part of a grant, down to the budget, as an argument.</p>
+      <a class="read" href="{{ '/sample-grants.html' | relative_url }}" aria-label="Read the toolkit: The Grant Writer’s Toolkit">Read the toolkit</a>
+    </div>
+    {% for i in (4..4) %}
     <div class="sample">
       <div class="sample-band" aria-hidden="true"></div>
       <p class="kind">Writing sample {{ i }}</p>
