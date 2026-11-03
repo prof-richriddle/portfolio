@@ -1,4 +1,29 @@
 (function () {
+  // Dark mode toggle (every page). Follows the device until the visitor picks.
+  var btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+  var root = document.documentElement;
+  var media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  function isDark() {
+    var t = root.getAttribute("data-theme");
+    if (t) return t === "dark";
+    return !!(media && media.matches);
+  }
+  function label() {
+    var dark = isDark();
+    btn.querySelector("span").textContent = dark ? "Light mode" : "Dark mode";
+  }
+  btn.addEventListener("click", function () {
+    var next = isDark() ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    label();
+  });
+  if (media && media.addEventListener) media.addEventListener("change", label);
+  label();
+})();
+
+(function () {
   // Any page with Show buttons: type buttons, plus topic filters where they exist.
   var typeBtns = document.querySelectorAll("[data-show]");
   var chips = document.querySelectorAll(".chip");

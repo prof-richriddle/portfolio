@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
 <meta name="description" content="{{ site.description }}">
+<script>
+  // Apply a saved light/dark choice before the page draws, so it doesn't flash.
+  try { var th = localStorage.getItem("theme"); if (th === "dark" || th === "light") document.documentElement.setAttribute("data-theme", th); } catch (e) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Noto+Sans+Thai:wght@400;600&display=swap">
@@ -22,6 +26,7 @@
         <li><a href="{{ '/family.html' | relative_url }}" {% if page.url == '/family.html' %}aria-current="page"{% endif %}>Friends &amp; Family</a></li>
         <li><a href="{{ '/portfolio.html' | relative_url }}" {% if page.url == '/portfolio.html' %}aria-current="page"{% endif %}>Portfolio</a></li>
         <li><a href="{{ '/readme.html' | relative_url }}" {% if page.url == '/readme.html' %}aria-current="page"{% endif %}>Read Me</a></li>
+        <li class="toggle-li"><button type="button" class="theme-toggle" id="theme-toggle"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3z"/></svg><span>Dark mode</span></button></li>
       </ul>
     </nav>
   </header>
