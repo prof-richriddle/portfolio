@@ -269,7 +269,7 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 .portraits-pause { font: 500 .78rem/1 var(--display); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: none; border: 0; padding: 4px 0; cursor: pointer; }
 .portraits-pause:hover { color: var(--fg); }
 .portraits-pause:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-.about-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 320px); gap: 40px; align-items: start; }
+.about-top { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 40px; align-items: start; }
 .about-top .portraits { margin-top: 44px; }
 @media (max-width: 760px) { .about-top { grid-template-columns: 1fr; gap: 24px; } .about-top .portraits { margin-top: 0; max-width: 280px; } }
 @media (prefers-reduced-motion: reduce) { .portraits-frame img { transition: none; } }
