@@ -66,3 +66,23 @@
   if (start && document.querySelector('[data-show="' + start + '"]')) state.show = start;
   apply();
 })();
+
+// About Me: rotate portraits every 3 seconds, with a pause button
+(function () {
+  var fig = document.querySelector(".portraits");
+  if (!fig) return;
+  var imgs = fig.querySelectorAll(".portraits-frame img");
+  var btn = fig.querySelector(".portraits-pause");
+  if (imgs.length < 2) { if (btn) btn.hidden = true; return; }
+  var i = 0, timer = null;
+  function next() {
+    imgs[i].classList.remove("on");
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add("on");
+  }
+  function play() { timer = setInterval(next, 3000); btn.textContent = "Pause photos"; btn.setAttribute("aria-pressed", "false"); }
+  function stop() { clearInterval(timer); timer = null; btn.textContent = "Play photos"; btn.setAttribute("aria-pressed", "true"); }
+  btn.addEventListener("click", function () { timer ? stop() : play(); });
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) stop(); else play();
+})();
