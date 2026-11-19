@@ -325,3 +325,6 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 .theme-toggle:hover { transform: translateY(-1px); }
 .theme-toggle svg { width: 14px; height: 14px; }
 nav.top li.toggle-li { display: flex; align-items: center; }
+
+/* About Me: set-off line in How I Work */
+.bio p.pullquote { font-family: var(--display); font-size: clamp(1.2rem, 2.4vw, 1.45rem); line-height: 1.35; font-weight: 500; padding: 4px 0 4px 18px; border-left: 4px solid; border-image: linear-gradient(to bottom, #E40303 0 16.66%, #FF8C00 16.66% 33.33%, #FFED00 33.33% 50%, #008026 50% 66.66%, #24408E 66.66% 83.33%, #732982 83.33% 100%) 1; margin-block: 6px; }
