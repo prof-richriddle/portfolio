@@ -111,7 +111,8 @@ section { padding-block: 44px; border-top: 1px solid var(--line); display: grid;
 .tile summary:hover .tile-band { background: var(--line); }
 .tile-topic { font-family: var(--display); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .tile-title { font-family: var(--display); font-weight: 500; font-size: .98rem; line-height: 1.35; overflow-wrap: anywhere; }
-.tile-more { font-size: .82rem; color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.tile-more { font-size: .82rem; color: var(--accent); }
+.tile-more::after { content: " ▾"; content: " ▾" / ""; }
 .tile[open] .tile-more { display: none; }
 .tile .abs { font-size: .92rem; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); }
 
@@ -334,3 +335,4 @@ nav.top li.toggle-li { display: flex; align-items: center; }
 
 .nowrap { white-space: nowrap; }
 .home-tag .tag-line { display: block; white-space: nowrap; }
+.sample a.read::after { content: " →"; content: " →" / ""; }
