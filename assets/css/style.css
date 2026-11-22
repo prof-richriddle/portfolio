@@ -242,7 +242,7 @@ nav.top a[aria-current="page"] { color: var(--accent); }
 /* later stages look upcoming */
 .timeline[data-current="1"] li:nth-child(n+2), .timeline[data-current="2"] li:nth-child(n+3),
 .timeline[data-current="3"] li:nth-child(n+4), .timeline[data-current="4"] li:nth-child(n+5),
-.timeline[data-current="5"] li:nth-child(n+6) { opacity: .55; }
+.timeline[data-current="5"] li:nth-child(n+6) { opacity: .72; }
 .tl-note { margin: 0; color: var(--muted); }
 @media (max-width: 760px) {
   .timeline { grid-template-columns: minmax(0, 1fr); padding: 0 0 0 30px; gap: 0; }
