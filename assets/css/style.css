@@ -336,3 +336,6 @@ nav.top li.toggle-li { display: flex; align-items: center; }
 .nowrap { white-space: nowrap; }
 .home-tag .tag-line { display: block; white-space: nowrap; }
 .sample a.read::after { content: " →"; content: " →" / ""; }
+
+/* Coursework: "whose words" line under titles that quote someone else (AI-resilient design) */
+.tile-context { display: block; font-size: .85rem; font-style: italic; color: var(--muted); line-height: 1.4; }

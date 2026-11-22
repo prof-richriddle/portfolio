@@ -111,6 +111,7 @@ title: Portfolio
         <span class="tile-band"><span class="tile-topic">{{ w.topics | join: " · " }}</span></span>
         {% endif %}
         <span class="tile-title">{{ w.title }}</span>
+        {% if w.context %}<span class="tile-context">{{ w.context }}</span>{% endif %}
         <span class="tile-more">Read summary</span>
       </summary>
       <p class="abs">{{ w.content | strip | remove: "<p>" | remove: "</p>" }}</p>
