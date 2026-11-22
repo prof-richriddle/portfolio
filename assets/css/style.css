@@ -333,3 +333,4 @@ nav.top li.toggle-li { display: flex; align-items: center; }
 .steps-lead { margin: 0 0 18px; font-size: 1.05rem; color: var(--muted); }
 
 .nowrap { white-space: nowrap; }
+.home-tag .tag-line { display: block; white-space: nowrap; }
