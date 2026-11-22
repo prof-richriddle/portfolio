@@ -86,3 +86,20 @@
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduce) stop(); else play();
 })();
+
+// Writing sample pages: "Back to Portfolio" returns visitors to the exact view
+// they left (same filter, same spot) when they came from the Portfolio page.
+// Otherwise the link opens Portfolio at the writing samples.
+(function () {
+  var link = document.querySelector("a.back-link");
+  if (!link) return;
+  link.addEventListener("click", function (e) {
+    try {
+      var ref = document.referrer ? new URL(document.referrer) : null;
+      if (ref && ref.origin === location.origin && /\/portfolio\.html$/.test(ref.pathname) && history.length > 1) {
+        e.preventDefault();
+        history.back();
+      }
+    } catch (err) {}
+  });
+})();
