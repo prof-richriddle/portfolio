@@ -26,8 +26,10 @@ title: Read Me
 </section>
 
 <section class="readme" aria-labelledby="a11y-h">
-  <h2 id="a11y-h">Accessibility <span class="draft">Coming soon</span></h2>
-  <p>Here I’ll note what I checked with the WAVE accessibility checker, such as alt text, color contrast, and link text, and what I fixed.</p>
+  <h2 id="a11y-h">Accessibility</h2>
+  <p>I checked every page with WAVE, and all eight came back with zero errors and zero contrast errors. I also ran a second checker, axe, in both light and dark mode. It caught two problems WAVE missed: faded text on the Friends &amp; Family timeline that was too light to read (WAVE doesn’t measure partly transparent text), and a box on the writing sample pages that confused screen readers. I fixed both.</p>
+  <p>WAVE also flagged “underlined text” that wasn’t a link: the labels that open each tile’s summary. I replaced the underline with an arrow (▾) and gave links to new pages a different one (→).</p>
+  <p>A few alerts I kept on purpose. My photo descriptions are long because they describe everything a sighted reader sees. The tile thumbnails have empty alt text because the title right below already says what the picture shows. And the rotating photos on About Me have a pause button and stay still for anyone whose device is set to reduce motion.</p>
 </section>
 
 <section class="readme" aria-labelledby="aiready-h">
